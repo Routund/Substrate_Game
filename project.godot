@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Train_Game"
-run/main_scene="uid://c0bok225hflii"
+run/main_scene="uid://djlgtwoa2l7cf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

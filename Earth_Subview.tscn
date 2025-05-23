@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxctvsgi51k3"]
+
+[ext_resource type="Script" uid="uid://6hkdsxwa7pku" path="res://Earth_Screen/input_tracker.gd" id="1_yav5r"]
+[ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Model.tscn" id="2_8xmli"]
+
+[node name="SubViewport" type="SubViewport"]
+transparent_bg = true
+handle_input_locally = false
+debug_draw = 1
+physics_object_picking = true
+script = ExtResource("1_yav5r")
+
+[node name="Earth" parent="." instance=ExtResource("2_8xmli")]
+transform = Transform3D(0.447759, 0, -0.894155, 0, 1, 0, 0.894155, 0, 0.447759, 0, 0, -4.94838)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53773e-07, 0, -3.98335)
