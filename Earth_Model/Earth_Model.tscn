@@ -19,6 +19,19 @@ script = ExtResource("2_lrfcm")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+visible = false
 shape = SubResource("SphereShape3D_7inlf")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+debug_shape_custom_color = Color(0.243829, 0.652811, 3.85046e-07, 1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+target_position = Vector3(2, 0, 0)
+debug_shape_custom_color = Color(1, 0.132478, 0.220373, 1)
+
+[node name="RayCast3D3" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 2)
+debug_shape_custom_color = Color(0.428849, 0.483182, 1, 1)
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
