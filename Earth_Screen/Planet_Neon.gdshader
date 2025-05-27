@@ -1,25 +1,42 @@
-shader_type spatial;
-uniform sampler2D globe_text;
+shader_type canvas_item;
 uniform float thickness = 0.0;
 uniform float add = 0.0001;
+uniform vec3 exclusive_colour = vec3(1.0,0.5,1.0);
+
+float mag(vec3 vec){
+	return sqrt(vec.x*vec.x + vec.y*vec.y+vec.z*vec.z);
+}
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
-	vec3 colour = texture(globe_text,UV).rgb;
+	vec4 sample = texture(TEXTURE,UV);
+	vec3 colour = sample.rgb;
 
-	vec3 up = texture(globe_text,vec2(UV.x,UV.y+add)).rgb;
-	vec3 left = texture(globe_text,vec2(UV.x-add,UV.y)).rgb;
-	vec3 right = texture(globe_text,vec2(UV.x+add,UV.y)).rgb;
-	vec3 down = texture(globe_text,vec2(UV.x,UV.y-add)).rgb;
+	float up = mag(colour- texture(TEXTURE,vec2(UV.x,UV.y+add)).rgb);
+	float left = mag(colour- texture(TEXTURE,vec2(UV.x-add,UV.y)).rgb);
+	float right = mag(colour - texture(TEXTURE,vec2(UV.x+add,UV.y)).rgb);
+	float down = mag(colour - texture(TEXTURE,vec2(UV.x,UV.y-add)).rgb);
 
-	if(abs(colour.r - up.r) > thickness || abs(colour.r - down.r) > thickness || abs(colour.r - left.r) > thickness || abs(colour.r - right.r) > thickness){
-		ALBEDO = vec3(32.0,6.6,0.9);
+	if(up > thickness || down > thickness || left > thickness || right > thickness){
+		COLOR = vec4(1.0,0.55,0.1,1.0);
+	}
+	else if(mag(colour - vec3(1.0,1.0,1.0)) > 0.1 && sample.a > 0.0){
+		if (mag(colour- texture(TEXTURE,vec2(UV.x,UV.y+add*10.0)).rgb) > 0.004 || mag(colour - texture(TEXTURE,vec2(UV.x,UV.y-add*10.0)).rgb) > 0.004 || mag(colour- texture(TEXTURE,vec2(UV.x-add*10.0,UV.y)).rgb) > 0.004 || mag(colour- texture(TEXTURE,vec2(UV.x+add*10.0,UV.y)).rgb) > 0.004){
+			COLOR = vec4(010,0.55,0.1,0.6);
+		}
+		else{
+			COLOR = vec4(0);
+		}
 	}
 	else{
-		ALBEDO = vec3(0.0,0.0,0.0);
+		COLOR = vec4(0);
+	}
+
+	if (mag(colour-exclusive_colour) < 0.05){
+		COLOR = vec4(1.0,0.55,0.1,0.8);
 	}
 	 //Called for every pixel the material is visible on.
 }

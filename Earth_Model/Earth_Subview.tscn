@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drxctvsgi51k3"]
 
-[ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Model.tscn" id="2_8xmli"]
+[ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Model.tscn" id="1_4768e"]
 
 [node name="SubViewport" type="SubViewport"]
 transparent_bg = true
@@ -8,8 +8,8 @@ handle_input_locally = false
 debug_draw = 1
 physics_object_picking = true
 
-[node name="Earth" parent="." instance=ExtResource("2_8xmli")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="Earth" parent="." instance=ExtResource("1_4768e")]
+transform = Transform3D(-0.293523, 0, -0.955952, 0, 1, 0, 0.955952, 0, -0.293523, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

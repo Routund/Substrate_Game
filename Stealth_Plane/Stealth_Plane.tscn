@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgjagyxglgq4u"]
+
+[ext_resource type="Texture2D" uid="uid://du2vstu2sbbd0" path="res://Stealth_Plane/Recon_plane.png" id="1_8nps0"]
+[ext_resource type="Script" uid="uid://c75q6awffgyfv" path="res://Stealth_Plane/stealth_plane.gd" id="1_lchg8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lchg8"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_8nps0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f8oqj"]
+material = SubResource("StandardMaterial3D_lchg8")
+size = Vector2(0.02, 0.02)
+
+[node name="StealthPlane" type="Node3D"]
+script = ExtResource("1_lchg8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_f8oqj")

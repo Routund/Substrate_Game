@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://kl7dnjbt0qeb"]
+[gd_scene load_steps=8 format=3 uid="uid://kl7dnjbt0qeb"]
 
 [ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/Material Base Color.png" id="1_oqafj"]
 [ext_resource type="Script" uid="uid://budw8felfyywc" path="res://Earth_Model/Globe.gd" id="2_lrfcm"]
+[ext_resource type="PackedScene" uid="uid://dgjagyxglgq4u" path="res://Stealth_Plane/Stealth_Plane.tscn" id="3_7inlf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p86y4"]
 albedo_texture = ExtResource("1_oqafj")
@@ -10,7 +11,11 @@ albedo_texture = ExtResource("1_oqafj")
 material = SubResource("StandardMaterial3D_p86y4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7inlf"]
-radius = 0.548775
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lrfcm"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 1.2
 
 [node name="MeshInstance3D" type="MeshInstance3D"]
 mesh = SubResource("SphereMesh_x41mv")
@@ -19,19 +24,12 @@ script = ExtResource("2_lrfcm")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-visible = false
 shape = SubResource("SphereShape3D_7inlf")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 2, 0)
-debug_shape_custom_color = Color(0.243829, 0.652811, 3.85046e-07, 1)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_lrfcm")
 
-[node name="RayCast3D2" type="RayCast3D" parent="."]
-target_position = Vector3(2, 0, 0)
-debug_shape_custom_color = Color(1, 0.132478, 0.220373, 1)
-
-[node name="RayCast3D3" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, 2)
-debug_shape_custom_color = Color(0.428849, 0.483182, 1, 1)
+[node name="StealthPlane" parent="." instance=ExtResource("3_7inlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430401, 0.0510042, 0.166175)
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
