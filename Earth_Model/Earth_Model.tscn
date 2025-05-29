@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://kl7dnjbt0qeb"]
+[gd_scene load_steps=9 format=3 uid="uid://kl7dnjbt0qeb"]
 
 [ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/Material Base Color.png" id="1_oqafj"]
 [ext_resource type="Script" uid="uid://budw8felfyywc" path="res://Earth_Model/Globe.gd" id="2_lrfcm"]
@@ -12,7 +12,11 @@ material = SubResource("StandardMaterial3D_p86y4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7inlf"]
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_7inlf"]
+albedo_color = Color(0.219501, 0.219501, 0.219501, 1)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_lrfcm"]
+material = SubResource("ORMMaterial3D_7inlf")
 top_radius = 0.01
 bottom_radius = 0.01
 height = 1.2
@@ -27,6 +31,7 @@ script = ExtResource("2_lrfcm")
 shape = SubResource("SphereShape3D_7inlf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.517011, 0, 0.855978, 0, 1, 0, -0.855978, 0, 0.517011, 0, 0, 0)
 mesh = SubResource("CylinderMesh_lrfcm")
 
 [node name="StealthPlane" parent="." instance=ExtResource("3_7inlf")]

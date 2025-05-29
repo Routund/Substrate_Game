@@ -22,7 +22,7 @@ func sample(point : Vector3):
 		u = 1+u
 	var v = asin(point.y)/PI + 0.5
 	var colour = world_map.get_pixel(u*world_map.get_size().x-1,(1-v)*world_map.get_size().y)
-	if (Vector3(colour.r,colour.g,colour.b) != Vector3(1.0,1.0,1.0)):
+	if ((Vector3(colour.r,colour.g,colour.b)-Vector3(0.133333, 0.133333, 0.133333)).length() > 0.01):
 		neon_shader.material.set("shader_parameter/exclusive_colour",colour)
 	pass
 

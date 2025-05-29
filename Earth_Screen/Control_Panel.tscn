@@ -5,9 +5,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jbh4"]
 shader = ExtResource("1_uqmre")
-shader_parameter/thickness = 0.1
+shader_parameter/thickness = 0.01
 shader_parameter/add = 0.001
 shader_parameter/exclusive_colour = Vector3(1, 0.5, 1)
+shader_parameter/shading_thresh = 0.004
 
 [node name="Control" type="Control"]
 layout_mode = 3

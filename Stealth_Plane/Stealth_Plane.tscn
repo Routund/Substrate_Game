@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgjagyxglgq4u"]
+[gd_scene load_steps=6 format=3 uid="uid://dgjagyxglgq4u"]
 
 [ext_resource type="Texture2D" uid="uid://du2vstu2sbbd0" path="res://Stealth_Plane/Recon_plane.png" id="1_8nps0"]
 [ext_resource type="Script" uid="uid://c75q6awffgyfv" path="res://Stealth_Plane/stealth_plane.gd" id="1_lchg8"]
@@ -14,8 +14,16 @@ albedo_texture = ExtResource("1_8nps0")
 material = SubResource("StandardMaterial3D_lchg8")
 size = Vector2(0.02, 0.02)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lchg8"]
+size = Vector3(0.025, 0.001, 0.025)
+
 [node name="StealthPlane" type="Node3D"]
 script = ExtResource("1_lchg8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_f8oqj")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_lchg8")
