@@ -11,3 +11,8 @@ func _process(delta: float) -> void:
 	transform = new_transform.orthonormalized()
 	
 	transform = transform.rotated(up,0.02)
+
+func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action("select_units"):
+		print("HII")
+		$AnimationPlayer.play("change_to_selected")

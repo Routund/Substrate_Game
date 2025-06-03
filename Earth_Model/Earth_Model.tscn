@@ -13,7 +13,7 @@ material = SubResource("StandardMaterial3D_p86y4")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7inlf"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_7inlf"]
-albedo_color = Color(0.219501, 0.219501, 0.219501, 1)
+albedo_color = Color(0.80678, 0.590761, 0.478037, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lrfcm"]
 material = SubResource("ORMMaterial3D_7inlf")
