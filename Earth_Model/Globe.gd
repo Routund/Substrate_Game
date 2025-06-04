@@ -18,29 +18,28 @@ func _ready():
 func change_selected(colour):
 	if ((Vector3(colour.r,colour.g,colour.b)-Vector3(0.133333, 0.133333, 0.133333)).length() > 0.01):
 		neon_shader.material.set("shader_parameter/exclusive_colour",colour)
+		return true
+	return false
 	
 
-func sample(point : Vector3):
+func sample(point : Vector3) -> bool:
 	point = point.normalized()
 	var u = (atan2(point.x, point.z)) / (2 * PI);
 	if u < 0:
 		u = 1+u
 	var v = asin(point.y)/PI + 0.5
 	var colour = world_map.get_pixel(u*world_map.get_size().x-1,(1-v)*world_map.get_size().y)
-	change_selected(colour)
+	print(colour)
+	return change_selected(colour)
 	pass
 
 func _process(float) -> void:
 	if mouse_down:
 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			mouse_down = false
-			if !dragging:
-				sample(last_mouse_pos)
-			dragging = false
 		else:
 			var mouse_vel = Input.get_last_mouse_velocity()
 			if mouse_vel.length() > 0.1:
-				dragging = true
 				rotation_velocity = mouse_vel
 	
 	if rotation_velocity.length() > 0:
@@ -55,9 +54,6 @@ func _process(float) -> void:
 	
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
-	if event.is_action("select_units"):
-		change_selected(Color(0,0,1,1))
-		return
 	if event is InputEventMouseButton:
 		if event.button_index == 5:
 			$"../Camera3D".fov = min(150,$"../Camera3D".fov+0.4)
@@ -66,5 +62,14 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 		else:
 			mouse_down = true
 			last_mouse_pos = to_local(event_position)
-		
+	if event.is_action("select_units"):
+		deal_with_selected(0)
+		return
 	pass # Replace with function body.
+
+func deal_with_selected(item):
+	if item == 0:
+		if !sample(last_mouse_pos):
+			change_selected(Color(0,0,1,1))
+	if item == 1:
+		change_selected(Color(0,0,1,1))

@@ -1,5 +1,6 @@
 extends Node3D
 
+var selected = false
 
 func _process(delta: float) -> void:
 	position += 0.001 * transform.basis.x
@@ -12,7 +13,15 @@ func _process(delta: float) -> void:
 	
 	transform = transform.rotated(up,0.02)
 
+func toggle_select(state):
+	selected = state
+	if selected:
+		$AnimationPlayer.play("change_to_selected")
+	else:
+		$AnimationPlayer.play("change_to_unselected")
+
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event.is_action("select_units"):
 		print("HII")
+		get_parent().deal_with_selected(1)
 		$AnimationPlayer.play("change_to_selected")

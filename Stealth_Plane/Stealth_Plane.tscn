@@ -19,6 +19,21 @@ size = Vector2(0.02, 0.02)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lchg8"]
 size = Vector3(0.025, 0.02, 0.025)
 
+[sub_resource type="Animation" id="Animation_qx6mh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8nps0")]
+}
+
 [sub_resource type="Animation" id="Animation_f8oqj"]
 resource_name = "change_to_selected"
 length = 0.01
@@ -33,21 +48,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("3_f8oqj")]
-}
-
-[sub_resource type="Animation" id="Animation_qx6mh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_8nps0")]
 }
 
 [sub_resource type="Animation" id="Animation_k33cn"]
