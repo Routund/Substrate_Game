@@ -4,13 +4,15 @@ extends MeshInstance3D
 @onready var camera : Camera3D = $"../Camera3D"
 var current_camera_degreees : float = 0
 var mouse_down = false
-var dragging = false
 var sensitivity_inv = 10000 
 var rotation_velocity : Vector2 = Vector2.ZERO
 var rotation_velocity_damping : float = 35
 var last_mouse_pos : Vector3 = Vector3(0,0,0)
+
 var world_map : Image = Image.load_from_file("res://Earth_Model/Material Base Color.png")
 @onready var neon_shader : SubViewportContainer = get_parent().get_parent()
+
+@onready var player_units_list = $Player_Units
 
 func _ready():
 	pass
@@ -35,7 +37,7 @@ func sample(point : Vector3) -> bool:
 
 func _process(float) -> void:
 	if mouse_down:
-		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			mouse_down = false
 		else:
 			var mouse_vel = Input.get_last_mouse_velocity()
@@ -62,7 +64,12 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 		else:
 			mouse_down = true
 			last_mouse_pos = to_local(event_position)
-	if event.is_action("select_units"):
+	if event.is_action_pressed("select_new_positions",true):
+		for child in player_units_list.get_children():
+			if child.selected:
+				child.set_target(last_mouse_pos)
+		return
+	if event.is_action_pressed("select_units"):
 		deal_with_selected(0)
 		return
 	pass # Replace with function body.
@@ -71,5 +78,9 @@ func deal_with_selected(item):
 	if item == 0:
 		if !sample(last_mouse_pos):
 			change_selected(Color(0,0,1,1))
+		for child in player_units_list.get_children():
+			child.toggle_select(false)
 	if item == 1:
 		change_selected(Color(0,0,1,1))
+		for child in player_units_list.get_children():
+			child.toggle_select(false)

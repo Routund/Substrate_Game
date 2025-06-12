@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c75q6awffgyfv" path="res://Stealth_Plane/stealth_plane.gd" id="1_lchg8"]
 [ext_resource type="Texture2D" uid="uid://bk3aexkh8bdtb" path="res://Stealth_Plane/Recon_plane_selected.png" id="3_f8oqj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lchg8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8oqj"]
 resource_local_to_scene = true
 transparency = 2
 alpha_scissor_threshold = 0.5
@@ -12,8 +12,9 @@ alpha_antialiasing_mode = 0
 cull_mode = 2
 albedo_texture = ExtResource("1_8nps0")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_f8oqj"]
-material = SubResource("StandardMaterial3D_lchg8")
+[sub_resource type="PlaneMesh" id="PlaneMesh_qx6mh"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_f8oqj")
 size = Vector2(0.02, 0.02)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lchg8"]
@@ -76,7 +77,8 @@ _data = {
 script = ExtResource("1_lchg8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_f8oqj")
+layers = 2
+mesh = SubResource("PlaneMesh_qx6mh")
 
 [node name="Area3D" type="Area3D" parent="."]
 

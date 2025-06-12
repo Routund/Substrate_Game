@@ -9,8 +9,10 @@ debug_draw = 1
 physics_object_picking = true
 
 [node name="Earth" parent="." instance=ExtResource("1_4768e")]
-transform = Transform3D(-0.517773, 0, 0.855518, 0, 1, 0, -0.855518, 0, -0.517773, 0, 0, 0)
+transform = Transform3D(0.164927, 0, -0.986306, 0, 1, 0, 0.986306, 0, 0.164927, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 rotation_edit_mode = 2
+cull_mask = 1047555
+current = true

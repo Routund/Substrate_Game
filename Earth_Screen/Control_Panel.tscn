@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jbh4"]
 shader = ExtResource("1_uqmre")
 shader_parameter/thickness = 0.01
-shader_parameter/outline_thresh = 0.007
+shader_parameter/outline_thresh = 0.009
 shader_parameter/exclusive_colour = Vector3(1, 0.5, 1)
 shader_parameter/shading_thresh = 0.004
 

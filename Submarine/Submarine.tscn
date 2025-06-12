@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=3 uid="uid://da33w817q7gle"]
+
+[ext_resource type="Script" uid="uid://dj43kg7atouck" path="res://Submarine/Submarine.gd" id="1_7sjif"]
+[ext_resource type="Texture2D" uid="uid://cwajxqpfgrn1e" path="res://Submarine/M.A.D Sub_Texture.png" id="1_ruxhd"]
+[ext_resource type="Script" uid="uid://cbubym246v5qh" path="res://Submarine/Submarine_2d.gd" id="2_3rm1t"]
+[ext_resource type="Texture2D" uid="uid://bllbkmr1n7hj3" path="res://Submarine/M.A.D Sub_Texture Selected.png" id="2_7sjif"]
+[ext_resource type="Texture2D" uid="uid://du2vstu2sbbd0" path="res://Stealth_Plane/Recon_plane.png" id="3_s4u6o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sjif"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_ruxhd")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4bgh4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_7sjif")
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="Animation" id="Animation_3rm1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ruxhd")]
+}
+
+[sub_resource type="Animation" id="Animation_4bgh4"]
+resource_name = "change_to_selected"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7sjif")]
+}
+
+[sub_resource type="Animation" id="Animation_s4u6o"]
+resource_name = "change_to_unselected"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_ruxhd")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m7mj"]
+_data = {
+&"RESET": SubResource("Animation_3rm1t"),
+&"change_to_selected": SubResource("Animation_4bgh4"),
+&"change_to_unselected": SubResource("Animation_s4u6o")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4bgh4"]
+size = Vector3(0.025, 0.02, 0.025)
+
+[node name="Submarine" type="Node3D"]
+script = ExtResource("1_7sjif")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(16.522, 512)
+gizmo_extents = 107.5
+script = ExtResource("2_3rm1t")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+visible = false
+position = Vector2(-0.0220003, -2.19345e-05)
+scale = Vector2(0.204167, 0.208333)
+texture = ExtResource("3_s4u6o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_4bgh4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0m7mj")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_4bgh4")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
