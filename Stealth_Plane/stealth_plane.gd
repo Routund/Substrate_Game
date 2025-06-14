@@ -11,20 +11,15 @@ func set_target(pos : Vector3):
 	transform = transform.rotated(position.normalized(),-PI/2)
 
 func _process(delta: float) -> void:
-	var up = position.normalized()
-	var side : Vector3 = up.cross(-basis.z)
-	var forward = up.cross(side)
-	var new_transform : Transform3D = Transform3D(side,up,forward,up*0.51)
-	#print(angle_between)
-	transform = new_transform.orthonormalized()
+	transform = GlobalRotator.rotate_turn(transform,0.51)
 	if reached:
-		transform = transform.rotated(up,0.02)
-		position += 0.0008 * transform.basis.x
+		transform = transform.rotated(basis.y,0.02)
+		position += 0.0003 * transform.basis.x
 	else:
 		var dir = target-position
-		position += side.normalized()*0.0008
+		position += basis.x*0.0008
 		if dir.length() < 0.04:
-			transform = transform.rotated(position.normalized(),-PI/2)
+			transform = transform.rotated(basis.y,-PI/2)
 			reached = true
 		
 

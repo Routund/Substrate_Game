@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c66ffjmuii5yr"]
+
+[ext_resource type="Script" uid="uid://cwph5tlrg2m8x" path="res://Stealth_Plane/enemy_plane/enemy_plane.gd" id="1_g2i57"]
+[ext_resource type="Texture2D" uid="uid://cu26u1fvfr1c" path="res://Stealth_Plane/enemy_plane/Enemy_plane.png" id="2_uxsa6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8oqj"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_uxsa6")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qx6mh"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_f8oqj")
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g2i57"]
+radius = 0.0447089
+
+[node name="StealthPlane" type="Node3D"]
+script = ExtResource("1_g2i57")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+layers = 2
+mesh = SubResource("PlaneMesh_qx6mh")
+
+[node name="DiscoveryRadius" type="Area3D" parent="."]
+
+[node name="Area3D" type="CollisionShape3D" parent="DiscoveryRadius"]
+shape = SubResource("SphereShape3D_g2i57")
+
+[connection signal="area_entered" from="DiscoveryRadius" to="." method="_on_discovery_radius_area_entered"]
+[connection signal="area_exited" from="DiscoveryRadius" to="." method="_on_discovery_radius_area_exited"]

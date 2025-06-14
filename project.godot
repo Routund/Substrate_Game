@@ -15,11 +15,20 @@ run/main_scene="uid://djlgtwoa2l7cf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalCamera="*res://Globals/Global_Camera.gd"
+GlobalRotator="*res://Globals/GlobalRotator.gd"
+
 [display]
 
 window/size/viewport_height=864
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[global_group]
+
+Player_recon=""
 
 [input]
 

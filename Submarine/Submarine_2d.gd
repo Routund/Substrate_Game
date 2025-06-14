@@ -28,6 +28,5 @@ func _physics_process(delta: float) -> void:
 		var direction = Vector2()
 		direction = (nav.get_next_path_position() - global_position).normalized() * speed
 		position += direction
-		print(nav.get_next_path_position())
 		if (position - nav.target_position).length() < 1.0:
 			reached = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drxctvsgi51k3"]
 
-[ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Model.tscn" id="1_4768e"]
+[ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Collision.tscn" id="1_4768e"]
 
 [node name="SubViewport" type="SubViewport"]
 transparent_bg = true

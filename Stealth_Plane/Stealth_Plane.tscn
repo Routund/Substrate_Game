@@ -80,9 +80,9 @@ script = ExtResource("1_lchg8")
 layers = 2
 mesh = SubResource("PlaneMesh_qx6mh")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Player_recon"]]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["Player_recon"]]
 shape = SubResource("BoxShape3D_lchg8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
