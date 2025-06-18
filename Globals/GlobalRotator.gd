@@ -27,3 +27,11 @@ func flatto3d(new_pos : Vector2) -> Vector3:
 	if new_pos.x > 0.5:
 		pos.x = -pos.x
 	return pos
+
+func roundto2d(pos : Vector3):
+	pos = pos.normalized()
+	var u = (atan2(pos.x, pos.z)) / (2 * PI);
+	if u < 0:
+		u = 1+u
+	var v = asin(pos.y)/PI + 0.5
+	return Vector2(u*1024, (1-v)*1024)

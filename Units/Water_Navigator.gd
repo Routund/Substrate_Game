@@ -2,7 +2,7 @@ extends Marker2D
 
 var speed = 0.2
 var target = Vector2(0,0)
-var reached = false
+var reached = true
 
 @onready var nav : NavigationAgent2D = $NavigationAgent2D
 
@@ -21,6 +21,7 @@ func set_target(pos : Vector3):
 	if lowest > right:
 		position = Vector2(position.x+1024,position.y)
 		lowest = right
+	nav.target_position=nav.get_final_position()
 	reached = false
 
 func _physics_process(_delta: float) -> void:
@@ -30,3 +31,4 @@ func _physics_process(_delta: float) -> void:
 		position += direction
 		if (position - nav.target_position).length() < 1.0:
 			reached = true
+			print(reached)

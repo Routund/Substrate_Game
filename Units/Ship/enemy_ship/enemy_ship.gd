@@ -3,6 +3,9 @@ var selected : bool = false
 @onready var pos2d = $Marker2D
 var last_pos = Vector2(0,0)
 var n_observers = 0
+var reached = true
+var subs = []
+var bad = []
 
 func _ready() -> void:
 	transform = GlobalRotator.rotate_flat(transform,0.501)
@@ -14,6 +17,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	var new_pos = pos2d.position/1024
+	reached = pos2d.reached
 	if last_pos != new_pos:
 		position = GlobalRotator.flatto3d(new_pos)
 		transform = GlobalRotator.rotate_flat(transform,0.501)
