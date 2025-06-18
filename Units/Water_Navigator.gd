@@ -1,6 +1,6 @@
 extends Marker2D
 
-var speed = 0.35
+var speed = 0.2
 var target = Vector2(0,0)
 var reached = false
 
@@ -23,7 +23,7 @@ func set_target(pos : Vector3):
 		lowest = right
 	reached = false
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !reached:
 		var direction = Vector2()
 		direction = (nav.get_next_path_position() - global_position).normalized() * speed

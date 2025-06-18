@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://b0mqbte756n06"]
 
-[ext_resource type="FontFile" uid="uid://dwiowii38vvbf" path="res://Tektur-VariableFont_wdth,wght.ttf" id="1_wnor3"]
+[ext_resource type="FontFile" uid="uid://dwiowii38vvbf" path="res://Earth_Screen/Tektur-VariableFont_wdth,wght.ttf" id="1_wnor3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnor3"]
 content_margin_left = 16.0

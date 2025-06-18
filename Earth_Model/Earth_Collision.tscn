@@ -1,16 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://kl7dnjbt0qeb"]
+[gd_scene load_steps=10 format=3 uid="uid://kl7dnjbt0qeb"]
 
 [ext_resource type="Script" uid="uid://budw8felfyywc" path="res://Earth_Model/Globe.gd" id="1_ulond"]
-[ext_resource type="PackedScene" uid="uid://dgjagyxglgq4u" path="res://Stealth_Plane/Stealth_Plane.tscn" id="2_m4c77"]
-[ext_resource type="PackedScene" uid="uid://c66ffjmuii5yr" path="res://Stealth_Plane/enemy_plane/Enemy_plane.tscn" id="2_tkrv0"]
-[ext_resource type="PackedScene" uid="uid://c8olfre1xicqq" path="res://Submarine/enemy_sub/enemy_sub.tscn" id="3_230as"]
-[ext_resource type="PackedScene" uid="uid://da33w817q7gle" path="res://Submarine/Submarine.tscn" id="3_tkrv0"]
+[ext_resource type="PackedScene" uid="uid://dgjagyxglgq4u" path="res://Units/Stealth_Plane/Stealth_Plane.tscn" id="2_m4c77"]
+[ext_resource type="PackedScene" uid="uid://da33w817q7gle" path="res://Units/Submarine/Submarine.tscn" id="3_tkrv0"]
 [ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/Material Base Color.png" id="4_230as"]
+[ext_resource type="PackedScene" uid="uid://o4aw5tebmocc" path="res://Units/Ship/Ship.tscn" id="7_230as"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulond"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4c77"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_x41mv"]
-material = SubResource("StandardMaterial3D_ulond")
+material = SubResource("StandardMaterial3D_m4c77")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7inlf"]
 
@@ -24,13 +23,6 @@ mesh = SubResource("SphereMesh_x41mv")
 script = ExtResource("1_ulond")
 
 [node name="Enemy_Units" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-
-[node name="StealthPlane" parent="Enemy_Units" instance=ExtResource("2_tkrv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08093, 0)
-
-[node name="Submarine" parent="Enemy_Units" instance=ExtResource("3_230as")]
-transform = Transform3D(-0.949972, -0.312335, 0, 0.312335, -0.949972, 0, 0, 0, 1, -0.0563484, -0.622735, 8.88178e-16)
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -38,7 +30,6 @@ transform = Transform3D(-0.949972, -0.312335, 0, 0.312335, -0.949972, 0, 0, 0, 1
 shape = SubResource("SphereShape3D_7inlf")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(1559, 638)
 navigation_polygon = SubResource("NavigationPolygon_7inlf")
 
@@ -53,22 +44,39 @@ transform = Transform3D(0.323571, 0.946204, 0, -0.946204, 0.323571, 0, 0, 0, 1, 
 [node name="Submarine1" parent="Player_Units" instance=ExtResource("3_tkrv0")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.141921, 7.93145e-09, 0.529324)
 
-[node name="Navigation_Controller" type="Node2D" parent="."]
-visible = false
+[node name="Ship" parent="Player_Units" instance=ExtResource("7_230as")]
+transform = Transform3D(-0.0440902, -0.792221, -0.60864, 0.999028, -0.0349632, -0.0268612, 5.91801e-09, -0.609232, 0.792992, -0.589143, 0.028001, -0.506811)
+
+[node name="Spawning_Controller" type="Node2D" parent="."]
 texture_filter = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="Navigation_Controller"]
-position = Vector2(511, 512)
+[node name="Mendzovian" type="Node2D" parent="Spawning_Controller"]
+
+[node name="Marker2D" type="Marker2D" parent="Spawning_Controller/Mendzovian"]
+position = Vector2(735, 567)
+
+[node name="Marker2D2" type="Marker2D" parent="Spawning_Controller/Mendzovian"]
+position = Vector2(593, 449)
+
+[node name="Marker2D3" type="Marker2D" parent="Spawning_Controller/Mendzovian"]
+position = Vector2(913, 411)
+
+[node name="Marker2D4" type="Marker2D" parent="Spawning_Controller/Mendzovian"]
+position = Vector2(627, 251)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spawning_Controller"]
+visible = false
+position = Vector2(512, 512)
 texture = ExtResource("4_230as")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Navigation_Controller"]
+[node name="Sprite2D2" type="Sprite2D" parent="Spawning_Controller"]
+visible = false
 position = Vector2(-513, 512)
 texture = ExtResource("4_230as")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Navigation_Controller"]
+[node name="Sprite2D3" type="Sprite2D" parent="Spawning_Controller"]
+visible = false
 position = Vector2(1535, 512)
 texture = ExtResource("4_230as")
-
-[node name="Navigation_Points" type="Node3D" parent="."]
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

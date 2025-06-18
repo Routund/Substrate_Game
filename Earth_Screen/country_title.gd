@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if i<len(new_text)*speed:
 		if i%speed==0:
 			text+=new_text[i/speed]

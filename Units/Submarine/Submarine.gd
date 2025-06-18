@@ -4,13 +4,12 @@ var selected : bool = false
 var last_pos = Vector2(0,0)
 
 func _ready() -> void:
-	GlobalRotator.rotate_flat(transform,0.501)
-	
+	transform = GlobalRotator.rotate_flat(transform,0.501)
 	var u = (atan2(basis.y.x, basis.y.z)) / (2 * PI);
 	if u < 0:
 		u = 1+u
 	var v = asin(basis.y.y)/PI + 0.5
-	pos2d.position = Vector2(u*1024, v*1024)
+	pos2d.position = Vector2(u*1024, (1-v)*1024)
 	
 func toggle_select(state):
 	selected = state
@@ -19,21 +18,10 @@ func toggle_select(state):
 	else:
 		$AnimationPlayer.play("change_to_unselected")
 
-func _process(delta: float) -> void:
+func _process(d_elta: float) -> void:
 	var new_pos = $Marker2D.position/1024
 	if last_pos != new_pos:
-		if new_pos.x < 0:
-			new_pos.x = 1-new_pos.x
-		elif new_pos.x > 1:
-			new_pos.x = new_pos.x-1
-		position.y = -(sin((new_pos.y - 0.5) * PI))
-		var ratio = tan(new_pos.x * 2 * PI)
-		position.z = sqrt((1 - position.y*position.y)/(abs(ratio*ratio+1)))
-		position.x = sqrt(position.z*position.z * ratio*ratio)
-		if new_pos.x > 0.25 and new_pos.x < 0.75:
-			position.z = -position.z
-		if new_pos.x > 0.5:
-			position.x = -position.x
+		position = GlobalRotator.flatto3d(new_pos)
 		transform = GlobalRotator.rotate_flat(transform,0.501)
 		last_pos = new_pos
 	pass
@@ -42,8 +30,18 @@ func set_target(pos : Vector3):
 	$Marker2D.set_target(pos.normalized())
 	pass
 
-func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action("select_units"):
 		get_parent().get_parent().deal_with_selected(1)
 		$AnimationPlayer.play("change_to_selected")
 		selected = true
+
+
+func _on_area_3d_2_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Enemy_high_vis") or area.is_in_group("Enemy_low_vis"):
+		area.get_parent().update_vis(true)
+
+
+func _on_area_3d_2_area_exited(area: Area3D) -> void:
+	if area.is_in_group("Enemy_high_vis") or area.is_in_group("Enemy_low_vis"):
+		area.get_parent().update_vis(false)

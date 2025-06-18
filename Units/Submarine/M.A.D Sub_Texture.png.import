@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg5ugueffu8gh"
-path.s3tc="res://.godot/imported/enemy_sub_texturew.png-8bf031026e7f83c88c1ec71a346309af.s3tc.ctex"
+uid="uid://cwajxqpfgrn1e"
+path.s3tc="res://.godot/imported/M.A.D Sub_Texture.png-7d40fa518ec850cbd2028f3f7e322fea.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Submarine/enemy_sub/enemy_sub_texturew.png"
-dest_files=["res://.godot/imported/enemy_sub_texturew.png-8bf031026e7f83c88c1ec71a346309af.s3tc.ctex"]
+source_file="res://Units/Submarine/M.A.D Sub_Texture.png"
+dest_files=["res://.godot/imported/M.A.D Sub_Texture.png-7d40fa518ec850cbd2028f3f7e322fea.s3tc.ctex"]
 
 [params]
 

@@ -10,14 +10,14 @@ func set_target(pos : Vector3):
 	transform = transform.looking_at(pos)
 	transform = transform.rotated(position.normalized(),-PI/2)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	transform = GlobalRotator.rotate_turn(transform,0.51)
 	if reached:
 		transform = transform.rotated(basis.y,0.02)
 		position += 0.0003 * transform.basis.x
 	else:
 		var dir = target-position
-		position += basis.x*0.0008
+		position += basis.x*0.00095
 		if dir.length() < 0.04:
 			transform = transform.rotated(basis.y,-PI/2)
 			reached = true
@@ -30,9 +30,21 @@ func toggle_select(state):
 	else:
 		$AnimationPlayer.play("change_to_unselected")
 
-func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action("select_units"):
 		print("HII")
 		get_parent().get_parent().deal_with_selected(1)
 		$AnimationPlayer.play("change_to_selected")
 		selected = true
+
+
+func _on_area_3d_2_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Enemy_high_vis"):
+		area.get_parent().update_vis(true)
+	pass # Replace with function body.
+
+
+func _on_area_3d_2_area_exited(area: Area3D) -> void:
+	if area.is_in_group("Enemy_high_vis"):
+		area.get_parent().update_vis(false)
+	pass # Replace with function body.

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dwiowii38vvbf"
-path="res://.godot/imported/Tektur-VariableFont_wdth,wght.ttf-d4c26cf4faa2c23717d8e196173d9b48.fontdata"
+path="res://.godot/imported/Tektur-VariableFont_wdth,wght.ttf-db4a6adb65f569eea5f763284183962a.fontdata"
 
 [deps]
 
-source_file="res://Tektur-VariableFont_wdth,wght.ttf"
-dest_files=["res://.godot/imported/Tektur-VariableFont_wdth,wght.ttf-d4c26cf4faa2c23717d8e196173d9b48.fontdata"]
+source_file="res://Earth_Screen/Tektur-VariableFont_wdth,wght.ttf"
+dest_files=["res://.godot/imported/Tektur-VariableFont_wdth,wght.ttf-db4a6adb65f569eea5f763284183962a.fontdata"]
 
 [params]
 

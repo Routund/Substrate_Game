@@ -39,9 +39,8 @@ func sample(point : Vector3) -> bool:
 	var v = asin(point.y)/PI + 0.5
 	var colour = world_map.get_pixel(u*world_map.get_size().x-1,(1-v)*world_map.get_size().y)
 	return change_selected(colour)
-	pass
 
-func _process(float) -> void:
+func _process(_delta : float) -> void:
 	if mouse_down:
 		if !Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			mouse_down = false
@@ -63,7 +62,7 @@ func _process(float) -> void:
 		rotation_velocity.y = move_toward(rotation_velocity.y,0,rotation_velocity_damping)
 	
 
-func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == 5:
 			$"../Camera3D".fov = min(150,$"../Camera3D".fov+1)

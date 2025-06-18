@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du2vstu2sbbd0"
-path.s3tc="res://.godot/imported/Recon_plane.png-04db5b8481160a9fb7d2d3be707b3fc0.s3tc.ctex"
+uid="uid://cg5ugueffu8gh"
+path.s3tc="res://.godot/imported/enemy_sub_texturew.png-0e9bd9e2b565d4bb1d364254f5246655.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Stealth_Plane/Recon_plane.png"
-dest_files=["res://.godot/imported/Recon_plane.png-04db5b8481160a9fb7d2d3be707b3fc0.s3tc.ctex"]
+source_file="res://Units/Submarine/enemy_sub/enemy_sub_texturew.png"
+dest_files=["res://.godot/imported/enemy_sub_texturew.png-0e9bd9e2b565d4bb1d364254f5246655.s3tc.ctex"]
 
 [params]
 

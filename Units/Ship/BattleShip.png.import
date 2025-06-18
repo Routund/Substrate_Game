@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwajxqpfgrn1e"
-path.s3tc="res://.godot/imported/M.A.D Sub_Texture.png-5977b4015e05d9aea558b3bab897b698.s3tc.ctex"
+uid="uid://dkmuk1h74e4kh"
+path.s3tc="res://.godot/imported/BattleShip.png-72f0587ef8358b6601d17d3617cfa204.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Submarine/M.A.D Sub_Texture.png"
-dest_files=["res://.godot/imported/M.A.D Sub_Texture.png-5977b4015e05d9aea558b3bab897b698.s3tc.ctex"]
+source_file="res://Units/Ship/BattleShip.png"
+dest_files=["res://.godot/imported/BattleShip.png-72f0587ef8358b6601d17d3617cfa204.s3tc.ctex"]
 
 [params]
 
