@@ -1,6 +1,6 @@
 extends Label
 var new_text = "United Federated Republic"
-var speed = 5
+var speed = 3
 var i = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():

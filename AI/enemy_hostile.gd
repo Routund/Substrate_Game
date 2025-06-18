@@ -7,8 +7,7 @@ var plane_scene = preload("res://Units/Stealth_Plane/enemy_plane/Enemy_plane.tsc
 var sub_scene = preload("res://Units/Submarine/enemy_sub/enemy_sub.tscn")
 var unit_types = []
 var detected_subs = []
-var detected_planes = []
-var detected_
+var detected_recon = []
 
 var money = 0
 
@@ -18,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	money += delta*1000
 	
-	for unit in units:
+	for unit in units.get_children():
 		pass
 	
 	if money/5000 > 1:
@@ -30,5 +29,3 @@ func _process(delta: float) -> void:
 		new_unit.position.y = new_unit.position.y
 		new_unit.transform = GlobalRotator.rotate_flat(new_unit.transform,0.501)
 		units.add_child(new_unit)
-		
-		

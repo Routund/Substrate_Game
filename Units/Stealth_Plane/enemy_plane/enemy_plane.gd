@@ -1,8 +1,7 @@
 extends Node3D
 
 var n_observers = 0
-signal bad_found
-signal bad_lost
+var bad = []
 
 func _process(_delta: float) -> void:
 	transform = GlobalRotator.rotate_turn(transform,0.51)
@@ -22,11 +21,11 @@ func update_vis(entering : bool):
 
 func _on_area_3d_2_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player_recon") and (area.is_in_group("Ship") or area.is_in_group("Plane")):
-		bad_found.emit()
+		bad.append(area.position)
 	pass # Replace with function body.
 
 
 func _on_area_3d_2_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player_recon") and (area.is_in_group("Ship") or area.is_in_group("Plane")):
-		bad_lost.emit()
+		pass
 	pass # Replace with function body.

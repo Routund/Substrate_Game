@@ -26,7 +26,7 @@ var countries = [
 	["Great Mendzova"],
 	["Fenlaw"],
 	["Emmerastan"],
-	["Polarian Union"]
+	["Polar States"]
 ]
 
 func change_selected(id):
