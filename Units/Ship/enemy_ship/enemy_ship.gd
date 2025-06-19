@@ -4,8 +4,8 @@ var selected : bool = false
 var last_pos = Vector2(0,0)
 var n_observers = 0
 var reached = true
-var subs = []
-var bad = []
+var subs : Array = []
+var bad : Array = []
 
 func _ready() -> void:
 	transform = GlobalRotator.rotate_flat(transform,0.501)
@@ -36,3 +36,18 @@ func update_vis(entering : bool):
 		n_observers-=1
 		if n_observers <= 0:
 			visible= false
+
+
+func _on_monitoring_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Player_recon"):
+		if area.is_in_group("Ship") or area.is_in_group("Plane"):
+			bad.append(area)
+		elif area.is_in_group("Submarine"):
+			subs.append(area)
+
+func _on_monitoring_area_exited(area: Area3D) -> void:
+	if area.is_in_group("Player_recon"):
+		if area.is_in_group("Ship") or area.is_in_group("Plane"):
+			bad.pop_at(bad.find(area))
+		elif area.is_in_group("Submarine"):
+			subs.pop_at(subs.find(area))

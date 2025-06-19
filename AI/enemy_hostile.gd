@@ -12,7 +12,7 @@ var check_seen_timer : Timer = Timer.new()
 var FR : Vector3 = Vector3(0.01887, -0.140792, 0.479397)
 var r = 0.1
 
-var money = 3000000
+var money = 30000
 var bad = {}
 var subs = {}
 var scared_dist = 0.1
@@ -20,7 +20,7 @@ var scared_dist = 0.1
 func _ready() -> void:
 	add_child(check_seen_timer)
 	check_seen_timer.start(5)
-	unit_types = [ship_scene,ship_scene,ship_scene]
+	unit_types = [plane_scene,ship_scene,sub_scene]
 
 func _process(delta: float) -> void:
 	money += delta*1000
@@ -45,8 +45,8 @@ func _process(delta: float) -> void:
 			
 	
 	
-	if money/3000000 > 1:
-		money -= 3000000
+	if money/30000 > 1:
+		money -= 30000
 		var rand_ind = randi_range(0,2)
 		var new_unit = unit_types[rand_ind].instantiate()
 		var rand_pos : Marker2D = spawn_points.get_child(randi_range(0,spawn_points.get_child_count()-1))

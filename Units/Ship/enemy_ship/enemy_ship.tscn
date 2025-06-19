@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhbyu71dyeokx"]
+[gd_scene load_steps=9 format=3 uid="uid://bhbyu71dyeokx"]
 
 [ext_resource type="Script" uid="uid://df1ev4a7qhdye" path="res://Units/Ship/enemy_ship/enemy_ship.gd" id="1_lb5do"]
 [ext_resource type="Script" uid="uid://cbubym246v5qh" path="res://Units/Water_Navigator.gd" id="2_61tl5"]
@@ -18,8 +18,11 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_7sjif")
 size = Vector2(0.02, 0.02)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_k7qg1"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_lb5do"]
 radius = 0.022
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k7qg1"]
+radius = 0.015
 
 [node name="Enemy_Ship" type="Node3D" groups=["Ship"]]
 script = ExtResource("1_lb5do")
@@ -42,8 +45,17 @@ transform = Transform3D(1.2, 0, 1.04907e-07, 0, -1.2, 0, -1.04907e-07, 0, 1.2, 0
 layers = 2
 mesh = SubResource("PlaneMesh_4bgh4")
 
-[node name="Area3D2" type="Area3D" parent="." groups=["Enemy_high_vis"]]
+[node name="monitoring" type="Area3D" parent="."]
 input_ray_pickable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="monitoring"]
+shape = SubResource("SphereShape3D_lb5do")
+
+[node name="findable" type="Area3D" parent="." groups=["Enemy_high_vis"]]
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="findable"]
 shape = SubResource("SphereShape3D_k7qg1")
+
+[connection signal="area_entered" from="monitoring" to="." method="_on_monitoring_area_entered"]
+[connection signal="area_exited" from="monitoring" to="." method="_on_monitoring_area_exited"]
