@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalCamera="*res://Globals/Global_Camera.gd"
 GlobalRotator="*res://Globals/GlobalRotator.gd"
+GlobalFinance="*res://Globals/GlobalFinance.gd"
 
 [display]
 

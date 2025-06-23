@@ -43,6 +43,7 @@ func _on_monitoring_area_entered(area: Area3D) -> void:
 		if area.is_in_group("Ship") or area.is_in_group("Plane"):
 			bad.append(area)
 		elif area.is_in_group("Submarine"):
+			area.get_parent().toggle_destruction(true)
 			subs.append(area)
 
 func _on_monitoring_area_exited(area: Area3D) -> void:
@@ -51,3 +52,4 @@ func _on_monitoring_area_exited(area: Area3D) -> void:
 			bad.pop_at(bad.find(area))
 		elif area.is_in_group("Submarine"):
 			subs.pop_at(subs.find(area))
+			area.get_parent().toggle_destruction(false)

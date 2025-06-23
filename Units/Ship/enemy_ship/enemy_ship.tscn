@@ -25,6 +25,7 @@ radius = 0.022
 radius = 0.015
 
 [node name="Enemy_Ship" type="Node3D" groups=["Ship"]]
+visible = false
 script = ExtResource("1_lb5do")
 
 [node name="Marker2D" type="Marker2D" parent="."]

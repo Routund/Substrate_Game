@@ -22,7 +22,7 @@ func change_selected(colour):
 	var vec = (Vector3(colour.r,colour.g,colour.b))
 	if ((vec-Vector3(0.133333, 0.133333, 0.133333)).length() > 0.01):
 		neon_shader.material.set("shader_parameter/exclusive_colour",colour)
-		var id = controller.colour_to_id.get(vec,-1)
+		var id = controller.colour_to_id.get(hash(vec),-1)
 		controller.change_selected(id)
 		return true
 	controller.change_selected(-1)
@@ -76,7 +76,7 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 				child.set_target(last_mouse_pos)
 		return
 	if event.is_action_pressed("select_units"):
-		print(event_position)
+		print(to_local(event_position))
 		deal_with_selected(0)
 		return
 	pass # Replace with function body.

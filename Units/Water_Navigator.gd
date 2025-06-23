@@ -31,4 +31,3 @@ func _physics_process(_delta: float) -> void:
 		position += direction
 		if (position - nav.target_position).length() < 1.0:
 			reached = true
-			print(reached)

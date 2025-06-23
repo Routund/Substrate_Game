@@ -1,10 +1,16 @@
 extends Node3D
 
 var n_observers = 0
+var n_destroyers = 0
+var timer = Timer.new()
 var reached = true
 var target = Vector2(0,0)
 var bad = []
 var subs = []
+
+func _ready() -> void:
+	add_child(timer)
+	timer.connect("timeout",die)
 
 func _process(_delta: float) -> void:
 	transform = GlobalRotator.rotate_turn(transform,0.51)
@@ -43,3 +49,15 @@ func _on_area_3d_2_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player_recon") and (area.is_in_group("Ship") or area.is_in_group("Plane")):
 		bad.pop_at(bad.find(area))
 	pass # Replace with function body.
+
+func toggle_destruction(entering : bool):
+	if entering:
+		timer.start(5)
+		n_destroyers += 1
+	else:
+		n_destroyers-=1
+		if n_destroyers <= 0:
+			timer.stop()
+
+func die():
+	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8olfre1xicqq"]
+[gd_scene load_steps=8 format=3 uid="uid://c8olfre1xicqq"]
 
 [ext_resource type="Script" uid="uid://b82opb7ymhjk7" path="res://Units/Submarine/enemy_sub/enemy_sub.gd" id="1_oigdh"]
 [ext_resource type="Script" uid="uid://cbubym246v5qh" path="res://Units/Water_Navigator.gd" id="2_ue1st"]
@@ -21,7 +21,11 @@ size = Vector2(0.02, 0.02)
 [sub_resource type="SphereShape3D" id="SphereShape3D_oigdh"]
 radius = 0.015
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_c8gnh"]
+radius = 0.022
+
 [node name="Submarine" type="Node3D" groups=["Submarine"]]
+visible = false
 script = ExtResource("1_oigdh")
 
 [node name="Marker2D" type="Marker2D" parent="."]
@@ -37,6 +41,17 @@ layers = 2
 mesh = SubResource("PlaneMesh_4bgh4")
 
 [node name="DiscoveryRadius" type="Area3D" parent="." groups=["Enemy_low_vis"]]
+input_ray_pickable = false
 
 [node name="Area3D" type="CollisionShape3D" parent="DiscoveryRadius"]
 shape = SubResource("SphereShape3D_oigdh")
+
+[node name="monitoring" type="Area3D" parent="."]
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="monitoring"]
+shape = SubResource("SphereShape3D_c8gnh")
+
+[connection signal="area_entered" from="monitoring" to="." method="_on_monitoring_area_entered"]
+[connection signal="area_exited" from="monitoring" to="." method="_on_monitoring_area_exited"]

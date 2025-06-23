@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtu34nbd8uovm"]
+
+[ext_resource type="Theme" uid="uid://b0mqbte756n06" path="res://Earth_Screen/Screen.tres" id="1_7tokg"]
+[ext_resource type="Texture2D" uid="uid://dkmuk1h74e4kh" path="res://Units/Ship/BattleShip.png" id="2_3l3s7"]
+[ext_resource type="Script" uid="uid://d3vha8v32wkrv" path="res://Earth_Screen/unit_individual_purpose.gd" id="2_lcsbj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcsbj"]
+
+[node name="VBoxContainer" type="CenterContainer"]
+offset_right = 107.0
+offset_bottom = 99.0
+theme = ExtResource("1_7tokg")
+script = ExtResource("2_lcsbj")
+
+[node name="Panel2" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 210)
+layout_mode = 2
+
+[node name="Panel" type="VBoxContainer" parent="Panel2"]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 150.0
+offset_bottom = 209.0
+
+[node name="Title" type="Label" parent="Panel2/Panel"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lcsbj")
+text = "Battleship"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 131
+
+[node name="TextureRect" type="TextureRect" parent="Panel2/Panel"]
+custom_minimum_size = Vector2(90, 120)
+layout_mode = 2
+texture = ExtResource("2_3l3s7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="Panel2/Panel"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "$60000"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 131
+
+[connection signal="pressed" from="Panel2" to="." method="_on_panel_2_pressed"]

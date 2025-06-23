@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://c10cd2cmuhvxx"]
+[gd_scene load_steps=12 format=3 uid="uid://c10cd2cmuhvxx"]
 
 [ext_resource type="Script" uid="uid://bodxoyn2yubet" path="res://Earth_Screen/Control_Master.gd" id="1_i8let"]
 [ext_resource type="Shader" uid="uid://cwnsywapscegx" path="res://Earth_Screen/Planet_Neon.gdshader" id="1_uqmre"]
-[ext_resource type="Texture2D" uid="uid://b1ph2pnc3tysd" path="res://Earth_Model/Earth2.tres" id="2_k3ocv"]
+[ext_resource type="PackedScene" uid="uid://dtu34nbd8uovm" path="res://Earth_Screen/Unit_Buy.tscn" id="2_advwo"]
 [ext_resource type="PackedScene" uid="uid://com33wor4f3aj" path="res://Earth_Model/Earth_Model.tscn" id="3_8k5dv"]
 [ext_resource type="PackedScene" uid="uid://drxctvsgi51k3" path="res://Earth_Model/Earth_Subview.tscn" id="3_maaix"]
 [ext_resource type="Theme" uid="uid://b0mqbte756n06" path="res://Earth_Screen/Screen.tres" id="5_mewf0"]
 [ext_resource type="Script" uid="uid://dyvwao1bh6wwg" path="res://Earth_Screen/country_title.gd" id="6_x1xwf"]
+[ext_resource type="Script" uid="uid://co7lqs7skbxnv" path="res://Earth_Screen/PlayerTaxes.gd" id="8_josks"]
+[ext_resource type="Script" uid="uid://cqy5bonhec1v7" path="res://Earth_Screen/unit_buy.gd" id="9_p0myn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_advwo"]
+viewport_path = NodePath("EarthModel")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jbh4"]
 resource_local_to_scene = true
@@ -15,7 +20,7 @@ shader_parameter/thickness = 0.01
 shader_parameter/outline_thresh = 0.009
 shader_parameter/exclusive_colour = Vector3(1, 0.5, 1)
 shader_parameter/shading_thresh = 0.004
-shader_parameter/globe_text = ExtResource("2_k3ocv")
+shader_parameter/globe_text = SubResource("ViewportTexture_advwo")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -32,17 +37,18 @@ offset_bottom = 540.0
 color = Color(0, 0, 0, 1)
 
 [node name="EarthModel" parent="." instance=ExtResource("3_8k5dv")]
-size = Vector2i(720, 540)
+size = Vector2i(594, 540)
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 material = SubResource("ShaderMaterial_0jbh4")
 layout_mode = 0
+offset_left = 126.0
 offset_right = 720.0
 offset_bottom = 540.0
 stretch = true
 
 [node name="SubViewport" parent="SubViewportContainer" instance=ExtResource("3_maaix")]
-size = Vector2i(720, 540)
+size = Vector2i(594, 540)
 render_target_update_mode = 4
 
 [node name="Country_Title" type="Label" parent="."]
@@ -52,13 +58,55 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 329.0
-offset_top = -3.0
-offset_right = 352.0
-offset_bottom = 41.0
+offset_left = 377.0
+offset_top = -8.0
+offset_right = 429.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_mewf0")
+text = "$0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_x1xwf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 610.0
+offset_top = 461.0
+offset_right = 675.0
+offset_bottom = 495.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("5_mewf0")
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_josks")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 643.0
+scale = Vector2(0.84, 0.84)
+mouse_filter = 2
+
+[node name="UnitBuy" type="VBoxContainer" parent="CenterContainer"]
+z_index = 1
+layout_direction = 2
+layout_mode = 2
+script = ExtResource("9_p0myn")
+
+[node name="Plane" parent="CenterContainer/UnitBuy" groups=["Plane"] instance=ExtResource("2_advwo")]
+layout_mode = 2
+
+[node name="Submarine" parent="CenterContainer/UnitBuy" groups=["Submarine"] instance=ExtResource("2_advwo")]
+layout_mode = 2
+
+[node name="Battleship" parent="CenterContainer/UnitBuy" groups=["Ship"] instance=ExtResource("2_advwo")]
+layout_mode = 2
