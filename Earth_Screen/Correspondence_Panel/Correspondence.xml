@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<correspondences>
+	<speaker character = "General" icon = "res://Earth_Screen/Correspondence_Panel/Leader_Male.png">
+		<dialog_node message = "Nuclear War Started">
+			Mrs. President, we've detected incoming warheads from {foreign_country_noun}, we must retaliate now!
+		</dialog_node>
+		<dialog_node message = "Introduction">
+				Mrs. President, I must congratulate you on your recent election win, the Federated Republic could do with a strong leader like you.
+			<response change = "5" next_dialogue = "Introduction" next_speaker = "Mendzovan">
+				Glad to have you on General.
+			</response>
+		</dialog_node>
+	</speaker>
+	<speaker character = "Mendzovan">
+		<dialog_node message = "Introduction">
+			Mendzova congratulates you on your victory. Me and my ministers are looking forward to... more conducive talks between our two nations.
+			<response change = "-2" next_dialogue = "" next_speaker = "">
+				These are interesting times...
+			</response>
+		</dialog_node>
+	</speaker>
+</correspondences>

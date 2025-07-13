@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ghqejl8gqsf8"]
+
+[ext_resource type="FontFile" uid="uid://dwiowii38vvbf" path="res://Earth_Screen/Correspondence_Panel/Tektur-VariableFont_wdth,wght.ttf" id="1_ccwlj"]
+
+[resource]
+font = ExtResource("1_ccwlj")
+font_size = 13
+font_color = Color(0.956863, 0.52549, 0.0941176, 1)

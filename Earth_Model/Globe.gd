@@ -10,7 +10,7 @@ var rotation_velocity : Vector2 = Vector2.ZERO
 var rotation_velocity_damping : float = 35
 var last_mouse_pos : Vector3 = Vector3(0,0,0)
 
-var world_map : Image = Image.load_from_file("res://Earth_Model/Material Base Color.png")
+@onready var world_map : Image = $Spawning_Controller/Sprite2D2.texture.get_image()
 @onready var neon_shader : SubViewportContainer = get_parent().get_parent()
 
 @onready var player_units_list = $Player_Units
@@ -76,7 +76,6 @@ func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Ve
 				child.set_target(last_mouse_pos)
 		return
 	if event.is_action_pressed("select_units"):
-		print(to_local(event_position))
 		deal_with_selected(0)
 		return
 	pass # Replace with function body.

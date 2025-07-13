@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://com33wor4f3aj"]
 
-[ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/Material Base Color.png" id="1_oqafj"]
+[ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/earth_map.png" id="1_oqafj"]
 [ext_resource type="Script" uid="uid://c1nw52jlvkxqk" path="res://Earth_Model/Earth_model_camera.gd" id="2_lrfcm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u3gd"]

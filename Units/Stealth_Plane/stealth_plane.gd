@@ -7,13 +7,15 @@ var n_observers = 0
 var n_destroyers = 0
 var timer = Timer.new()
 
+func _ready() -> void:
+	add_child(timer)
+	timer.connect("timeout",die)
+
 func set_target(pos : Vector3):
 	reached = false
 	target = pos
 	transform = transform.looking_at(pos)
 	transform = transform.rotated(position.normalized(),-PI/2)
-	add_child(timer)
-	timer.connect("timeout",die)
 
 func _process(_delta: float) -> void:
 	transform = GlobalRotator.rotate_turn(transform,0.51)

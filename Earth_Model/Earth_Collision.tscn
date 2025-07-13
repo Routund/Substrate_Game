@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://kl7dnjbt0qeb"]
+[gd_scene load_steps=8 format=3 uid="uid://kl7dnjbt0qeb"]
 
 [ext_resource type="Script" uid="uid://budw8felfyywc" path="res://Earth_Model/Globe.gd" id="1_ulond"]
-[ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/Material Base Color.png" id="4_230as"]
+[ext_resource type="PackedScene" uid="uid://dgjagyxglgq4u" path="res://Units/Stealth_Plane/Stealth_Plane.tscn" id="2_7b37x"]
+[ext_resource type="Texture2D" uid="uid://cy0msq0qyiat" path="res://Earth_Model/earth_map.png" id="4_230as"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4c77"]
 
@@ -31,6 +32,9 @@ position = Vector2(1559, 638)
 navigation_polygon = SubResource("NavigationPolygon_7inlf")
 
 [node name="Player_Units" type="Node3D" parent="."]
+
+[node name="StealthPlane" parent="Player_Units" instance=ExtResource("2_7b37x")]
+transform = Transform3D(0.695035, 0.704545, 0.143328, 0, 0.199351, -0.979928, -0.718976, 0.681084, 0.138556, 0, 0, 0.630491)
 
 [node name="Spawning_Controller" type="Node2D" parent="."]
 texture_filter = 3
@@ -69,7 +73,7 @@ position = Vector2(519, 514)
 texture = ExtResource("4_230as")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Spawning_Controller"]
-visible = false
+texture_filter = 1
 position = Vector2(-513, 512)
 texture = ExtResource("4_230as")
 

@@ -1,4 +1,4 @@
-extends Label
+extends PanelContainer
 var new_text = "United Federated Republic"
 var speed = 3
 var i = 0
@@ -12,7 +12,7 @@ func _ready():
 func _process(_delta):
 	if i<len(new_text)*speed:
 		if i%speed==0:
-			text+=new_text[i/speed]
+			$Label.text+=new_text[i/speed]
 		i+=1
 	pass
 
@@ -23,4 +23,4 @@ func reset(new):
 		i=0
 		new_text=new
 		visible=true
-	text=""
+	$Label.text=""

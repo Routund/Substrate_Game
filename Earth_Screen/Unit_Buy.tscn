@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtu34nbd8uovm"]
 
-[ext_resource type="Theme" uid="uid://b0mqbte756n06" path="res://Earth_Screen/Screen.tres" id="1_7tokg"]
+[ext_resource type="Theme" uid="uid://b0mqbte756n06" path="res://Earth_Screen/Resources/Screen.tres" id="1_7tokg"]
 [ext_resource type="Texture2D" uid="uid://dkmuk1h74e4kh" path="res://Units/Ship/BattleShip.png" id="2_3l3s7"]
 [ext_resource type="Script" uid="uid://d3vha8v32wkrv" path="res://Earth_Screen/unit_individual_purpose.gd" id="2_lcsbj"]
 

@@ -1,12 +1,20 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b0mqbte756n06"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b0mqbte756n06"]
 
-[ext_resource type="FontFile" uid="uid://dwiowii38vvbf" path="res://Earth_Screen/Tektur-VariableFont_wdth,wght.ttf" id="1_wnor3"]
+[ext_resource type="FontFile" uid="uid://dwiowii38vvbf" path="res://Earth_Screen/Correspondence_Panel/Tektur-VariableFont_wdth,wght.ttf" id="1_wnor3"]
+[ext_resource type="StyleBox" uid="uid://3k7vj007uoc6" path="res://Earth_Screen/Resources/Orange_Box.tres" id="2_prmbl"]
 [ext_resource type="StyleBox" uid="uid://b64ndducugyns" path="res://Earth_Screen/Resources/Orange_Angle.tres" id="2_x0tbx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_he66w"]
+content_margin_left = 3.0
 
 [resource]
 Button/colors/font_color = Color(1, 0.52549, 0.0117647, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_wnor3")
-Button/styles/normal = ExtResource("2_x0tbx")
+Button/styles/focus = ExtResource("2_prmbl")
+Button/styles/hover = ExtResource("2_prmbl")
+Button/styles/normal = SubResource("StyleBoxEmpty_he66w")
 Label/colors/font_color = Color(1, 0.54902, 0.0980392, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -17,6 +25,6 @@ Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 15
 Label/fonts/font = ExtResource("1_wnor3")
-Label/styles/normal = ExtResource("2_x0tbx")
 Panel/styles/panel = ExtResource("2_x0tbx")
+PanelContainer/styles/panel = ExtResource("2_x0tbx")
 VBoxContainer/styles/Cont = ExtResource("2_x0tbx")

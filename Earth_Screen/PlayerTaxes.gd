@@ -1,4 +1,4 @@
-extends Label
+extends PanelContainer
 
 func _process(_delta: float) -> void:
-	text = "$" + str(GlobalFinance.player_money)
+	$Label.text = "$" + str(GlobalFinance.player_money)
