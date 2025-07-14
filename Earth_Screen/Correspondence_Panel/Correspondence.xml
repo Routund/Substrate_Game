@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <correspondences>
-	<speaker character = "General" icon = "/home/ads/dev/train_game/Earth_Screen/Correspondence_Panel/General_Female.png">
+	<speaker character = "General" icon = "res://Earth_Screen/Correspondence_Panel/General_Female.png">
 		<dialog_node message = "Nuclear War Started">
 			Mr. President, we've detected incoming warheads from {foreign_country_noun}, we must retaliate now!
 		</dialog_node>
@@ -11,7 +11,7 @@
 			</response>
 		</dialog_node>
 	</speaker>
-	<speaker character = "Mendzovan" icon = "/home/ads/dev/train_game/Earth_Screen/Correspondence_Panel/Leader_Male.png">
+	<speaker character = "Mendzovan" icon = "res://Earth_Screen/Correspondence_Panel/Leader_Male.png">
 		<dialog_node message = "Introduction">
 			Mendzova congratulates you on your victory. Me and my ministers are looking forward to... more conducive talks between our two nations.
 			<response change = "-2" next_dialogue = "" next_speaker = "">
