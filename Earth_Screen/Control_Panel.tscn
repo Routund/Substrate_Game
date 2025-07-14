@@ -1,11 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c10cd2cmuhvxx"]
+[gd_scene load_steps=20 format=3 uid="uid://c10cd2cmuhvxx"]
 
 [ext_resource type="Script" uid="uid://bodxoyn2yubet" path="res://Earth_Screen/Control_Master.gd" id="1_i8let"]
 [ext_resource type="Shader" uid="uid://cwnsywapscegx" path="res://Earth_Screen/Resources/Planet_Neon.gdshader" id="1_uqmre"]
 [ext_resource type="PackedScene" uid="uid://dtu34nbd8uovm" path="res://Earth_Screen/Unit_Buy.tscn" id="2_advwo"]
 [ext_resource type="PackedScene" uid="uid://com33wor4f3aj" path="res://Earth_Model/Earth_Model.tscn" id="3_8k5dv"]
 [ext_resource type="PackedScene" uid="uid://drxctvsgi51k3" path="res://Earth_Model/Earth_Subview.tscn" id="3_maaix"]
-[ext_resource type="Texture2D" uid="uid://b1ph2pnc3tysd" path="res://Earth_Model/Earth2.tres" id="4_p0myn"]
 [ext_resource type="Theme" uid="uid://b0mqbte756n06" path="res://Earth_Screen/Resources/Screen.tres" id="5_mewf0"]
 [ext_resource type="Script" uid="uid://dyvwao1bh6wwg" path="res://Earth_Screen/country_title.gd" id="6_x1xwf"]
 [ext_resource type="Script" uid="uid://co7lqs7skbxnv" path="res://Earth_Screen/PlayerTaxes.gd" id="8_josks"]
@@ -18,6 +17,9 @@
 [ext_resource type="LabelSettings" uid="uid://ghqejl8gqsf8" path="res://Earth_Screen/Resources/Response.tres" id="14_x27a8"]
 [ext_resource type="Script" uid="uid://bsg4syj57hsi4" path="res://Earth_Screen/Correspondence_Panel/response_container.gd" id="15_x27a8"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ilgb"]
+viewport_path = NodePath("EarthModel")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jbh4"]
 resource_local_to_scene = true
 shader = ExtResource("1_uqmre")
@@ -25,7 +27,25 @@ shader_parameter/thickness = 0.01
 shader_parameter/outline_thresh = 0.009
 shader_parameter/exclusive_colour = Vector3(1, 0.5, 1)
 shader_parameter/shading_thresh = 0.004
-shader_parameter/globe_text = ExtResource("4_p0myn")
+shader_parameter/globe_text = SubResource("ViewportTexture_0ilgb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x27a8"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.956863, 0.52549, 0.0941176, 1)
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+corner_detail = 4
+anti_aliasing = false
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -153,7 +173,7 @@ offset_right = 211.0
 offset_bottom = 537.0
 
 [node name="Speaker_Headshot" type="PanelContainer" parent="PanelContainer"]
-custom_minimum_size = Vector2(133.75, 158.305)
+custom_minimum_size = Vector2(133.75, 150.305)
 layout_mode = 2
 offset_left = 7.0
 offset_top = 1.0
@@ -163,6 +183,7 @@ pivot_offset = Vector2(218, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("5_mewf0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_x27a8")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/Speaker_Headshot"]
 layout_mode = 2
@@ -172,7 +193,7 @@ stretch_mode = 5
 [node name="Text_Container" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 0
 offset_left = 24.0
-offset_top = 154.0
+offset_top = 164.0
 offset_right = 197.0
 offset_bottom = 213.0
 theme_override_constants/separation = 0

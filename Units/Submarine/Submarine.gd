@@ -23,7 +23,7 @@ func toggle_select(state):
 	else:
 		$AnimationPlayer.play("change_to_unselected")
 
-func _process(d_elta: float) -> void:
+func _process(_delta: float) -> void:
 	var new_pos = $Marker2D.position/1024
 	if last_pos != new_pos:
 		position = GlobalRotator.flatto3d(new_pos)

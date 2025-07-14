@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 @onready var bounding : Area3D = $Area3D
-@onready var camera : Camera3D = $"../Camera3D"
+@onready var scene_camera : Camera3D = $"../Camera3D"
 @onready var controller : Control = get_parent().get_parent().get_parent()
 var current_camera_degreees : float = 0
 var mouse_down = false
@@ -50,11 +50,11 @@ func _process(_delta : float) -> void:
 	if rotation_velocity.length() > 0:
 		rotation.y += rotation_velocity.x/sensitivity_inv
 		current_camera_degreees = max(-PI/2,min(PI/2,current_camera_degreees + rotation_velocity.y/sensitivity_inv))
-		camera.position.z = cos(current_camera_degreees)
-		camera.position.y = sin(current_camera_degreees)
-		camera.transform.basis.y = Vector3(0,cos(current_camera_degreees),-sin(current_camera_degreees))
-		camera.transform.basis.z = Vector3(0,sin(current_camera_degreees),cos(current_camera_degreees))
-		GlobalCamera.camera_transform = camera.transform
+		scene_camera.position.z = cos(current_camera_degreees)
+		scene_camera.position.y = sin(current_camera_degreees)
+		scene_camera.transform.basis.y = Vector3(0,cos(current_camera_degreees),-sin(current_camera_degreees))
+		scene_camera.transform.basis.z = Vector3(0,sin(current_camera_degreees),cos(current_camera_degreees))
+		GlobalCamera.camera_transform = scene_camera.transform
 		GlobalCamera.globe_rot=rotation.y
 		rotation_velocity.x = move_toward(rotation_velocity.x,0,rotation_velocity_damping)
 		rotation_velocity.y = move_toward(rotation_velocity.y,0,rotation_velocity_damping)

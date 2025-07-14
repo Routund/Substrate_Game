@@ -3,7 +3,7 @@ extends Control
 @onready var body_text : Label = get_node("Text_Container/Correspondence_Text")
 @onready var response_list : VBoxContainer = get_node("Text_Container/Response_Container")
 func _ready() -> void:
-	var results = load_dialogues("General","Introduction")
+	var _results = load_dialogues("General","Introduction")
 
 func load_dialogues(speaker : String, dialog_name : String):
 	
