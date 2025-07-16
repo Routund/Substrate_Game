@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://drxctvsgi51k3"]
+[gd_scene load_steps=4 format=3 uid="uid://drxctvsgi51k3"]
 
 [ext_resource type="PackedScene" uid="uid://kl7dnjbt0qeb" path="res://Earth_Model/Earth_Collision.tscn" id="1_4768e"]
 [ext_resource type="Script" uid="uid://d2jay5ppo53nj" path="res://AI/Country_Manager.gd" id="2_5qb17"]
+[ext_resource type="Script" uid="uid://dt08vgich7c50" path="res://AI/mendzova.gd" id="3_vv6yp"]
 
 [node name="SubViewport" type="SubViewport"]
 transparent_bg = true
@@ -20,3 +21,6 @@ current = true
 
 [node name="AI_Parent" type="Node" parent="."]
 script = ExtResource("2_5qb17")
+
+[node name="Mendzova" type="Node" parent="AI_Parent"]
+script = ExtResource("3_vv6yp")

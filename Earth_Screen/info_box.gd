@@ -7,15 +7,15 @@ func change_info(info_array,diplomacy):
 	if info_array[0] != "Federated Republic":
 		$"HBoxContainer/Sillies/Diplomacy Status".visible = true
 		$"HBoxContainer/Sillies/Diplomacy Display".visible = true
-		if diplomacy <= 2:
+		if diplomacy <= 20:
 			$"HBoxContainer/Sillies/Diplomacy Display".text = "At war"
-		elif diplomacy <= 4:
+		elif diplomacy <= 40:
 			$"HBoxContainer/Sillies/Diplomacy Display".text = "Unfavourable"
-		elif diplomacy <= 6:
+		elif diplomacy <= 60:
 			$"HBoxContainer/Sillies/Diplomacy Display".text = "Neutral"
-		elif diplomacy == 7:
+		elif diplomacy == 70:
 			$"HBoxContainer/Sillies/Diplomacy Display".text = "Favourable"
-		elif diplomacy < 9:
+		elif diplomacy < 90:
 			$"HBoxContainer/Sillies/Diplomacy Display".text = "Ally"
 	else:
 		$"HBoxContainer/Sillies/Diplomacy Status".visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://djlgtwoa2l7cf"]
+[gd_scene load_steps=23 format=4 uid="uid://djlgtwoa2l7cf"]
 
 [ext_resource type="Texture2D" uid="uid://ddj2vwuwgpr2n" path="res://Earth_Screen/Resources/Earth_Screen.tres" id="1_wu01o"]
 [ext_resource type="PackedScene" uid="uid://c10cd2cmuhvxx" path="res://Earth_Screen/Control_Panel.tscn" id="2_4b7hu"]
@@ -15,7 +15,7 @@ shading_mode = 0
 albedo_texture = ExtResource("1_wu01o")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rid74"]
-size = Vector3(1, 0.753479, 0.0281982)
+size = Vector3(1, 0.75, 0.0267578)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbaui"]
 resource_name = "Material"
@@ -135,16 +135,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2mgmr")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wu206"]
-viewport_path = NodePath("SubViewport")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdnq8"]
 resource_local_to_scene = true
 resource_name = "Material.004"
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
-albedo_texture = SubResource("ViewportTexture_wu206")
 roughness = 0.0
+uv1_scale = Vector3(1.155, 1.155, 1.04)
+uv1_offset = Vector3(0, 0.13, 0.505)
+uv1_triplanar = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gugkd"]
 _surfaces = [{
@@ -177,14 +176,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gugkd")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_wu01o"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y1t8s"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_wu01o")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_srld0"]
 resource_local_to_scene = true
@@ -239,10 +230,10 @@ shadow_mesh = SubResource("ArrayMesh_vhk44")
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.39234, 1.40612, 5.337)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 79.7402, 1.40612, 5.337)
 
 [node name="Earth_Screen" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.07052e-07, 0, 11.6, 0, 11.6, 0, -11.6, 0, -5.07052e-07, -13.6545, 3.22758, 5.38208)
+transform = Transform3D(-5.07052e-07, 0, 11.6, 0, 11.6, 0, -11.6, 0, -5.07052e-07, 67.4375, 4.54826, 5.337)
 mesh = SubResource("QuadMesh_h7rx5")
 surface_material_override/0 = SubResource("StandardMaterial3D_vfhqg")
 script = ExtResource("4_wu206")
@@ -250,7 +241,7 @@ script = ExtResource("4_wu206")
 [node name="Area3D" type="Area3D" parent="Earth_Screen"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Earth_Screen/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00131226, 0.00152588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00131229, -0.00730848)
 shape = SubResource("BoxShape3D_rid74")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -263,12 +254,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0129, 0, 5.33748)
 visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18048, 9.20929, 0)
-light_energy = 4.071
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.2127, 4.72607, 5.337)
+light_color = Color(0.915595, 0.572516, 0.283704, 1)
+light_energy = 2.0
 omni_range = 34.531
 
 [node name="COMMAND_CENTRE" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.026, 0, 10.674)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1066, 1.32026, 10.674)
 
 [node name="Command_Chassis" type="MeshInstance3D" parent="COMMAND_CENTRE"]
 transform = Transform3D(1.74404, 0, 0, 0, 9.99146, 0, 0, 0, 11.9337, 15.0129, 0, -5.33748)
@@ -292,10 +284,15 @@ skeleton = NodePath("")
 
 [node name="Middle_Screen" type="MeshInstance3D" parent="COMMAND_CENTRE"]
 transform = Transform3D(1.74404, 0, 0, 0, 9.99146, 0, 0, 0, 11.9337, 15.0129, 0, -5.33748)
-material_override = SubResource("StandardMaterial3D_y1t8s")
 mesh = SubResource("ArrayMesh_srld0")
 
 [node name="Right_Screen" type="MeshInstance3D" parent="COMMAND_CENTRE"]
 transform = Transform3D(1.74404, 0, 0, 0, 9.99146, 0, 0, 0, 11.9337, 15.0129, 0, -5.33748)
 mesh = SubResource("ArrayMesh_ggbg0")
 skeleton = NodePath("")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.426285, 0, 0.904589, 0, 1, 0, -0.904589, 0, -0.426285, 93.0135, 0, 0)
+light_energy = 0.102
+light_volumetric_fog_energy = 12.613
+light_negative = true

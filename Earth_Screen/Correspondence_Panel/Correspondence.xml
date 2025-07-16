@@ -6,20 +6,32 @@
 		</dialog_node>
 		<dialog_node message = "Introduction">
 				Mr. President, I must congratulate you on your recent election win, the Federated Republic could do with a strong leader like you.
-			<response change = "0" next_dialogue = "Introduction" next_speaker = "Mendzovan">
+			<response changes = "0" responsees = "FR" next_dialogue = "Tutorial1" next_speaker = "General">
 				Glad to have you on General.
 			</response>
 		</dialog_node>
+		<dialog_node message = "Tutorial1">
+				A quick rundown on the terminal:
+				
+				Pan around the globe using the right mouse button.
+				
+				Select countries and units with left click
+				
+				Zoom in using your scroll
+			<response changes = "0" responsees = "FR" next_dialogue = "Introduction" next_speaker = "Mendzova">
+				Next ->
+			</response>
+		</dialog_node>
 	</speaker>
-	<speaker character = "Mendzovan" icon = "res://Earth_Screen/Correspondence_Panel/Leader_Male.png">
+	<speaker character = "Mendzova" icon = "res://Earth_Screen/Correspondence_Panel/Leader_Male.png">
 		<dialog_node message = "Introduction">
 			Mendzova congratulates you on your victory. Me and my ministers are looking forward to... more conducive talks between our two nations.
-			<response change = "-2" next_dialogue = "" next_speaker = "">
+			<response changes = "-2" responsees = "Mendzova" next_dialogue = "" next_speaker = "">
 				These are interesting times...
 			</response>
-			<response change = "2" next_dialogue =  too long
-			</response>"" next_speaker = "">
+			<response changes = "2" responsees = "Mendzova" next_dialogue = "" next_speaker = "">
 				We've been at each others throats for too long.
+			</response>
 		</dialog_node>
 	</speaker>
 	<speaker character = "Gromm Separist" icon = "/home/ads/dev/train_game/Earth_Screen/Correspondence_Panel/Leader_Male.png">

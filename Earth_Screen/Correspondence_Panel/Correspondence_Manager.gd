@@ -11,8 +11,10 @@ func load_dialogues(speaker : String, dialog_name : String):
 		body_text.text = ""
 		$Text_Container/Response_Container.clear_responses()
 		$Speaker_Headshot/TextureRect.texture = null
+		GlobalDialogue.talking = false
 		return
 	
+	GlobalDialogue.talking = true
 	var result = [" ",[]]
 	
 	# Set up Parser
@@ -43,13 +45,13 @@ func load_dialogues(speaker : String, dialog_name : String):
 		if parser.get_node_type() == XMLParser.NODE_TEXT:
 			var text = parser.get_node_data()
 			if text.strip_edges() != "" and len(current_node_info) != 0:
-				result[1].append([text, current_node_info[0],current_node_info[1],current_node_info[2]])
+				result[1].append([text, current_node_info[0],current_node_info[1],current_node_info[2],current_node_info[3]])
 		elif node_name == "response":
-			var change = int(parser.get_named_attribute_value("change"))
+			var change = parser.get_named_attribute_value("changes")
+			var respondees = parser.get_named_attribute_value("responsees")
 			var next_dialogue =  parser.get_named_attribute_value("next_dialogue")
 			var next_speaker = parser.get_named_attribute_value("next_speaker")
-			current_node_info = [change, next_speaker, next_dialogue]
-			print(current_node_info)
+			current_node_info = [change, respondees, next_speaker, next_dialogue]
 		elif node_name != "text":
 			break
 	

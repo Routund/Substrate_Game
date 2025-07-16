@@ -36,7 +36,7 @@ func change_selected(id):
 	if id != -1:
 		if id != current:
 			country_title.reset(countries[id][0])
-			infobox.change_info(countries[id],ai_manager.countries_base_matrix[id][1])
+			infobox.change_info(countries[id],GlobalDialogue.countries_base_matrix[id][1])
 			infobox.visible = true
 	else:
 		country_title.reset(null)
