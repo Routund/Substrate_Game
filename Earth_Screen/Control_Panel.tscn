@@ -138,7 +138,7 @@ layout_mode = 2
 [node name="Battleship" parent="CenterContainer/UnitBuy" groups=["Ship"] instance=ExtResource("2_advwo")]
 layout_mode = 2
 
-[node name="PanelContainer" type="Control" parent="."]
+[node name="DialogueContainer" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
 offset_left = -211.0
@@ -148,7 +148,7 @@ offset_bottom = 538.0
 theme = ExtResource("5_mewf0")
 script = ExtResource("11_whs7u")
 
-[node name="Retract_Toggle" type="Button" parent="PanelContainer"]
+[node name="Retract_Toggle" type="Button" parent="DialogueContainer"]
 layout_mode = 2
 offset_left = 198.0
 offset_top = 3.0
@@ -165,14 +165,14 @@ theme_override_styles/hover = ExtResource("12_x27a8")
 theme_override_styles/normal = ExtResource("12_x27a8")
 script = ExtResource("11_kccf0")
 
-[node name="Panel" type="Panel" parent="PanelContainer"]
+[node name="Panel" type="Panel" parent="DialogueContainer"]
 layout_mode = 2
 offset_left = 7.0
 offset_top = 1.0
 offset_right = 211.0
 offset_bottom = 537.0
 
-[node name="Speaker_Headshot" type="PanelContainer" parent="PanelContainer"]
+[node name="Speaker_Headshot" type="PanelContainer" parent="DialogueContainer"]
 custom_minimum_size = Vector2(133.75, 150.305)
 layout_mode = 2
 offset_left = 7.0
@@ -185,12 +185,12 @@ size_flags_vertical = 0
 theme = ExtResource("5_mewf0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_x27a8")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/Speaker_Headshot"]
+[node name="TextureRect" type="TextureRect" parent="DialogueContainer/Speaker_Headshot"]
 layout_mode = 2
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Text_Container" type="VBoxContainer" parent="PanelContainer"]
+[node name="Text_Container" type="VBoxContainer" parent="DialogueContainer"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 164.0
@@ -198,13 +198,13 @@ offset_right = 197.0
 offset_bottom = 213.0
 theme_override_constants/separation = 0
 
-[node name="Correspondence_Text" type="Label" parent="PanelContainer/Text_Container"]
+[node name="Correspondence_Text" type="Label" parent="DialogueContainer/Text_Container"]
 custom_minimum_size = Vector2(166.075, 0)
 layout_mode = 2
 label_settings = ExtResource("14_x27a8")
 autowrap_mode = 2
 
-[node name="Response_Container" type="VBoxContainer" parent="PanelContainer/Text_Container"]
+[node name="Response_Container" type="VBoxContainer" parent="DialogueContainer/Text_Container"]
 layout_mode = 2
 script = ExtResource("15_x27a8")
 
@@ -248,4 +248,4 @@ layout_mode = 2
 texture = ExtResource("11_i3qre")
 expand_mode = 2
 
-[connection signal="pressed" from="PanelContainer/Retract_Toggle" to="PanelContainer/Retract_Toggle" method="_on_pressed"]
+[connection signal="pressed" from="DialogueContainer/Retract_Toggle" to="DialogueContainer/Retract_Toggle" method="_on_pressed"]

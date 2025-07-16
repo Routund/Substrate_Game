@@ -18,7 +18,7 @@
 				Select countries and units with left click
 				
 				Zoom in using your scroll
-			<response changes = "0" responsees = "FR" next_dialogue = "Introduction" next_speaker = "Mendzova">
+			<response changes = "0" responsees = "FR" next_dialogue = "" next_speaker = "">
 				Next ->
 			</response>
 		</dialog_node>

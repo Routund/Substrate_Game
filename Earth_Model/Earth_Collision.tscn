@@ -69,12 +69,13 @@ position = Vector2(332, 418)
 
 [node name="Sprite2D" type="Sprite2D" parent="Spawning_Controller"]
 visible = false
-position = Vector2(519, 514)
+position = Vector2(512, 512)
 texture = ExtResource("4_230as")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Spawning_Controller"]
+visible = false
 texture_filter = 1
-position = Vector2(-513, 512)
+position = Vector2(-512, 512)
 texture = ExtResource("4_230as")
 
 [node name="Sprite2D3" type="Sprite2D" parent="Spawning_Controller"]
